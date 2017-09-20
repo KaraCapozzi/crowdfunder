@@ -9,15 +9,13 @@ class Pledge < ApplicationRecord
   # Owner should not be able to pledge towards own project
 
   def owner_cant_back_own_project
-    # @user = user
-    user = @project.user
-    @project = self.project.user
-
-    if @pledge.user == owner
-      error[notice: "cant pledge to own project"]
+    if user == project.user
+      errors.add(:name, message: "cant pledge to own project")
     end
+#if owners is is in project
+#return error
 
 
-  end
+end
 
 end
