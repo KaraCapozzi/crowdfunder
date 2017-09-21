@@ -12,4 +12,13 @@ class Project < ActiveRecord::Base
       errors.add(:start_date, message:"Start date should be in the future.")
     end
   end
+
+  def end_date_later_than_start_date
+    if start_date < end_date
+      errors.add(:end_date, message: "End date has to be later than start date.")
+
+    end
+
+
+  end
 end
